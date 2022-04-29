@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-abstract class MemoryPlaceRepositoryAbs<T extends PlaceEntity> implements PlaceRepository<T> {
+public abstract class MemoryPlaceRepositoryAbs<T extends PlaceEntity> implements PlaceRepository<T> {
 
     private final List<T> table = new ArrayList<>(); // 메모리 테이블
     private int index = 0; // id
@@ -39,6 +39,7 @@ abstract class MemoryPlaceRepositoryAbs<T extends PlaceEntity> implements PlaceR
     @Override
     public void deleteById(int id) {
         var foundEntity = table.stream().filter(it -> it.getId() == id).findFirst();
+
         if(foundEntity.isPresent()) {
             table.remove(foundEntity.get());
         }
