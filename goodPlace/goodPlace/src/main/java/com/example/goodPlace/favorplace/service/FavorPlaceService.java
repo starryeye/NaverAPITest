@@ -1,17 +1,23 @@
 package com.example.goodPlace.favorplace.service;
 
 import com.example.goodPlace.favorplace.dto.FavorPlaceDto;
+import com.example.goodPlace.favorplace.entity.FavorPlaceEntity;
+import com.example.goodPlace.favorplace.repository.FavorPlaceRepository;
 import com.example.goodPlace.naver.NaverClient;
 import com.example.goodPlace.naver.dto.SearchImageReq;
 import com.example.goodPlace.naver.dto.SearchLocalReq;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 @RequiredArgsConstructor
 public class FavorPlaceService {
 
     private final NaverClient naverClient;
+    private final FavorPlaceRepository favorPlaceRepository;
 
     public FavorPlaceDto search(String query) {
 
@@ -57,5 +63,54 @@ public class FavorPlaceService {
 
         return new FavorPlaceDto();
 
+    }
+
+    public FavorPlaceDto add(FavorPlaceDto favorPlaceDto) {
+        var entity = dtoToEntity(favorPlaceDto);
+
+        var savedEntity =  favorPlaceRepository.save(entity);
+
+        return entityToDto(savedEntity);
+    }
+
+    private FavorPlaceEntity dtoToEntity(FavorPlaceDto favorPlaceDto) {
+        var entity = new FavorPlaceEntity();
+
+        entity.setId(favorPlaceDto.getIndex());
+        entity.setTitle(favorPlaceDto.getTitle());
+        entity.setCategory(favorPlaceDto.getCategory());
+        entity.setAddress(favorPlaceDto.getAddress());
+        entity.setRoadAddress(favorPlaceDto.getRoadAddress());
+        entity.setHomePage(favorPlaceDto.getHomePage());
+        entity.setImage(favorPlaceDto.getImage());
+        entity.setVisit(favorPlaceDto.isVisit());
+        entity.setVisitCount(favorPlaceDto.getVisitCount());
+        entity.setRecentVisitDate(favorPlaceDto.getRecentVisitDate());
+
+        return entity;
+    }
+
+    private FavorPlaceDto entityToDto(FavorPlaceEntity favorPlaceEntity) {
+        var dto = new FavorPlaceDto();
+
+        dto.setIndex(favorPlaceEntity.getId());
+        dto.setTitle(favorPlaceEntity.getTitle());
+        dto.setCategory(favorPlaceEntity.getCategory());
+        dto.setAddress(favorPlaceEntity.getAddress());
+        dto.setRoadAddress(favorPlaceEntity.getRoadAddress());
+        dto.setHomePage(favorPlaceEntity.getHomePage());
+        dto.setImage(favorPlaceEntity.getImage());
+        dto.setVisit(favorPlaceEntity.isVisit());
+        dto.setVisitCount(favorPlaceEntity.getVisitCount());
+        dto.setRecentVisitDate(favorPlaceEntity.getRecentVisitDate());
+
+        return dto;
+    }
+
+    public List<FavorPlaceDto> findAll() {
+        return favorPlaceRepository.findAll()
+                .stream()
+                .map(it -> entityToDto(it))
+                .collect(Collectors.toList());
     }
 }

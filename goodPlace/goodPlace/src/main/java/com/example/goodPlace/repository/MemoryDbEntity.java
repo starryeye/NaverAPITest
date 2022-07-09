@@ -7,5 +7,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 public class MemoryDbEntity {
-    private int id; // id
+    private Integer id; // id
 }
