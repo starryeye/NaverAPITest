@@ -1,6 +1,5 @@
-package com.example.goodPlace.favorplace.entity;
+package com.example.goodPlace.favorplace.dto;
 
-import com.example.goodPlace.repository.MemoryDbEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,8 +9,9 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class FavorPlaceEntity extends MemoryDbEntity {
+public class FavorPlaceDto {
 
+    private int index;
     private String category;                    // 즐겨찾는 장소 카테고리
     private String title;                       // 장소명
 
