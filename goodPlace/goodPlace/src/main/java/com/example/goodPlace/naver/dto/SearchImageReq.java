@@ -17,7 +17,9 @@ public class SearchImageReq {
 
     private int start = 1;
 
-    private String sort = "random";
+    private String sort = "sim";
+
+    private String filter = "all";
 
     public MultiValueMap<String, String> toMultiValueMap() {
         var map = new LinkedMultiValueMap<String, String>();
@@ -26,6 +28,7 @@ public class SearchImageReq {
         map.add("display", String.valueOf(display));
         map.add("start", String.valueOf(start));
         map.add("sort", sort);
+        map.add("filter", filter);
 
         return map;
     }
