@@ -1,4 +1,4 @@
-package com.example.goodPlace.favorplace;
+package com.example.goodPlace.favorplace.repository;
 
 import com.example.goodPlace.favorplace.entity.FavorPlaceEntity;
 import com.example.goodPlace.favorplace.repository.FavorPlaceRepository;
