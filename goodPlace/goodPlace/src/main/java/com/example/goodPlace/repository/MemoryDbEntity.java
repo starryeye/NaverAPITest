@@ -6,6 +6,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class PlaceEntity {
+public class MemoryDbEntity {
     private int id; // id
 }
