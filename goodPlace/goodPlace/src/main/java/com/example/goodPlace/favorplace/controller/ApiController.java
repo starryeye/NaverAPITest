@@ -10,7 +10,7 @@ import java.util.List;
 
 @Slf4j
 @RestController
-@RequestMapping("/api/restaurant")
+@RequestMapping("/api/place")
 @RequiredArgsConstructor
 public class ApiController {
 
