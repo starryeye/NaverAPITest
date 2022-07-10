@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>맛집 WISH LIST</title>
+    <title>Good Place List</title>
 </head>
 
 <body>
@@ -13,7 +13,7 @@
         <!-- search -->
         <div class="row">
             <div class="col-sm-6 col-md-8">
-                <input id="searchBox" style="height: 46px" class="form-control form-control-lg" type="text" placeholder="맛집을 검색해주세요 ex.(판교 갈비집)" value="갈비집">
+                <input id="searchBox" style="height: 46px" class="form-control form-control-lg" type="text" placeholder="장소를 검색해주세요 ex.(서울역)" value="서울역">
             </div>
             <div class="col-sm-6 col-md-4">
                 <button id="searchButton" type="button" class="btn btn-primary btn-lg" style="width: 100%">검색</button>
@@ -42,7 +42,7 @@
 
         <div class="row">
             <div class="alert alert-info col-sm-12 col-md-12" style="text-align: center">
-                나의 맛집 리스트
+                나만의 장소 리스트
             </div>
         </div>
 
@@ -74,7 +74,7 @@
                             <li class="list-group-item">
                                 <button v-on:click="addVisit(wish.index)" type="button" class="btn btn-primary btn-lg" style="width: 100%;">방문 추가</button>
                                 <br/><br/>
-                                <button v-on:click="deleteWish(wish.index)" type="button" class="btn btn-primary btn-lg" style="width: 100%;">위시리스트 삭제</button>
+                                <button v-on:click="deleteWish(wish.index)" type="button" class="btn btn-primary btn-lg" style="width: 100%;">나만의 장소 삭제</button>
                             </li>
                             <li class="list-group-item"></li>
                         </ul>
