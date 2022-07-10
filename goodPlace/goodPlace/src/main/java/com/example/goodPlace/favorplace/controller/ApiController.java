@@ -31,4 +31,14 @@ public class ApiController {
     public List<FavorPlaceDto> findAll() {
         return favorPlaceService.findAll();
     }
+
+    @DeleteMapping("/{index}")
+    public void delete(@PathVariable int index){
+        favorPlaceService.delete(index);
+    }
+
+    @PostMapping("/{index}")
+    public void addVisit(@PathVariable int index) {
+        favorPlaceService.addVisit(index);
+    }
 }

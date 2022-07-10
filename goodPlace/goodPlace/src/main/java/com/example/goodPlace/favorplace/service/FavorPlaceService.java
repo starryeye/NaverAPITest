@@ -113,4 +113,18 @@ public class FavorPlaceService {
                 .map(it -> entityToDto(it))
                 .collect(Collectors.toList());
     }
+
+    public void delete(int index) {
+        favorPlaceRepository.deleteById(index);
+    }
+
+    public void addVisit(int index) {
+        var favorPlaceItem = favorPlaceRepository.findById(index);
+
+        if(favorPlaceItem.isPresent()) {
+            var item = favorPlaceItem.get();
+            item.setVisit(true);
+            item.setVisitCount(item.getVisitCount() + 1);
+        }
+    }
 }

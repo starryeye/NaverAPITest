@@ -3,6 +3,7 @@ package com.example.goodPlace.favorplace.entity;
 import com.example.goodPlace.repository.MemoryDbEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
@@ -10,6 +11,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@EqualsAndHashCode(callSuper = false)
 public class FavorPlaceEntity extends MemoryDbEntity {
 
     private String category;                    // 즐겨찾는 장소 카테고리
